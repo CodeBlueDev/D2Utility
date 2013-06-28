@@ -13,18 +13,19 @@ class Patch
     private:
         // Variables:
         Dll dll;
-        INT address, function, len;
-        BYTE* newCode;
-        BYTE* oldCode;
+        INT address, len;
+        DWORD newCode, oldCode;
         BOOL isInstalled;
         // Functions:
         // Function to get the address to patch in the specified Dll given an offset.
         INT GetDllOffset(Dll dll, INT offset);
+        // Attempts to write to the process memory
+        BOOL Write(DWORD code);
 
     public:
         // Functions:
         // Calculates the address to write to and the new code values
-        Patch(PatchType type, Dll dll, INT offset, INT function, INT len);
+        Patch(Dll dll, DWORD offset, DWORD patch, INT patchLen);
         // Destructor to clean up the patches made when the patch was installed.
         ~Patch();
         // Checks if the patch has been installed on the client.

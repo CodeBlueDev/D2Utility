@@ -5,11 +5,12 @@ BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpvReserved)
 {
     switch(dwReason)
     {
-        case DLL_PROCESS_ATTACH:
-            return D2Utility::Start(hInstance, lpvReserved);
-            break;
-        case DLL_PROCESS_DETACH:
-            return D2Utility::Stop();
-            break;
+    case DLL_PROCESS_ATTACH:
+        return D2Utility::Start(hInstance, lpvReserved);
+        break;
+    case DLL_PROCESS_DETACH:
+        return D2Utility::Stop();
+        break;
     }
+    return TRUE;
 }
