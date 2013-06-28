@@ -21,7 +21,7 @@ BOOL D2Utility::Start(HINSTANCE hInstance, LPVOID lpvReserved)
 BOOL D2Utility::Stop()
 {
     // Cleans up the patches made to the process
-    for(int i = 0; i < sizeof(patches) / sizeof(Patch*); i++)
+    for(int i = 0; i < (sizeof(patches) / sizeof(Patch*)); i++)
     {
         patches[i]->Uninstall();
     }

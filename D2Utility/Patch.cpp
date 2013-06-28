@@ -66,7 +66,7 @@ BOOL Patch::Install()
     {
         return TRUE;
     }
-    MessageBox(NULL, "Trying to install patch!", "Patch Install", MB_OK);
+    // Try to install the patch.
     isInstalled = Write(newCode);
     return isInstalled;
 }
@@ -78,6 +78,7 @@ BOOL Patch::Uninstall()
     {
         return TRUE;
     }
+    MessageBox(NULL, "Trying to uninstall patch!", "Patch Uninstall", MB_OK);
     isInstalled = Write(oldCode);
     return !isInstalled;
 }
@@ -90,5 +91,5 @@ BOOL Patch::Write(DWORD code)
         return FALSE;
     }
     WriteProcessMemory(GetCurrentProcess(), (VOID*)address, &code, len, NULL);
-    return !VirtualProtect((VOID*)address, len, protect, &protect);
+    return VirtualProtect((VOID*)address, len, protect, &protect);
 }
