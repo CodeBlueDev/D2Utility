@@ -78,7 +78,6 @@ BOOL Patch::Uninstall()
     {
         return TRUE;
     }
-    MessageBox(NULL, "Trying to uninstall patch!", "Patch Uninstall", MB_OK);
     isInstalled = Write(oldCode);
     return !isInstalled;
 }

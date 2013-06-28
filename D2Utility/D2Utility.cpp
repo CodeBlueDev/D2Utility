@@ -4,6 +4,8 @@
 // Initial Patches to the D2 process
 Patch* patches[] = {
     new Patch(D2CLIENT, (DWORD)0x6D703, (DWORD)0x23EB, 2), // Display Life Always
+    new Patch(D2CLIENT, (DWORD)0x6D7D6, (DWORD)0x25EB, 2), // Display Mana Always
+    new Patch(D2CLIENT, (DWORD)0x6DAC9, (DWORD)0x1EEB, 2), // Display Stamina Always
 };
 
 // Performs all the initial patches to the process
