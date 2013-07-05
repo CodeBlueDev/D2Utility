@@ -37,6 +37,61 @@ bool D2Utils::initPatches( std::vector< Patch > patches)
 	return true;
 }
 
+void D2Utils::displayGameText( wchar_t message[128], int x, int y, int color )
+{
+	__asm {
+		pushad
+		pushfd
+		push 0
+		push color
+		push y
+		mov edx,x
+		mov ecx, dword ptr ds:[message]
+		mov esi, 0x6fabd298
+		call esi
+		popfd
+		popad
+	}
+}
+
+void D2Utils::drawLine( int x1, int y1, int x2, int y2, int color )
+{
+	__asm {
+		pushad
+		pushfd
+
+		push 0x7f
+		push color
+		push y2
+		push x2
+		push y1
+		push x1
+		mov esi, 0x6fabd016
+		call esi
+
+		popfd
+		popad
+	}
+}
+
+void D2Utils::drawRectangle( int x1, int y1, int x2, int y2, int color, int trans )
+{
+	__asm {
+		pushad
+		pushfd
+		push trans
+		push color
+		push y2
+		push x2
+		push y1
+		push x1
+		mov esi,0x6fabd02e
+		call esi
+		popfd
+		popad
+	}
+}
+
 void D2Utils::displayChatMessage( char message[128] )
 {
 	__asm {
